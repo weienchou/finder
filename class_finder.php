@@ -4,6 +4,9 @@ class Finder {
 	var $current_keyword = Array();
 	var $repeat_category = Array();
 
+	var $start_time = '';
+	var $stop_time = '';
+
 	function __construct($type) {
 		ini_set('max_execution_time', 0);
 
@@ -29,6 +32,21 @@ class Finder {
 	    mysql_select_db($dbname);
 	}
 
+	function set_start_time() {
+		$this->start_time = strtotime('now');
+	}
+
+	function set_stop_time() {
+		$this->stop_time = strtotime('now');
+	}
+
+	function show_time() {
+		$diff = floor($this->stop_time-$this->start_time);
+		echo 'Start '.date('Y/m/d H:i:s', $this->start_time).' . <br />';
+		echo 'Stop '.date('Y/m/d H:i:s', $this->stop_time).' . <br />';
+		echo 'Spend '.$diff.' s. <br />';
+	}
+
 	// 檢查 construct type 是否有在 db 中
 	function check_type($type) {
 		$sql = "
@@ -49,7 +67,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'陽光'
+			'不給你找到..........'
 		);
 	}
 
@@ -63,7 +81,7 @@ class Finder {
 	        CURLOPT_FOLLOWLOCATION => true,
 	        CURLOPT_VERBOSE		   => true,
 	        CURLOPT_ENCODING       => '',
-	        CURLOPT_USERAGENT      => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20120101 Firefox/33.0',
+	        CURLOPT_USERAGENT      => 'Mozilla/5.0 (WAYNE) Gecko/20120101 Firefox/33.0',
 	        CURLOPT_AUTOREFERER    => true,
 	        CURLOPT_CONNECTTIMEOUT => 120,
 	        CURLOPT_TIMEOUT        => 120,
@@ -121,32 +139,35 @@ class Finder {
 		}
 	}
 
-	function update_woods($wid, $wname, $wprice, $woffer) {
+	function update_woods($wid, $wname, $wprice, $woffer, $wpic) {
 		if(empty($wid) || empty($wname)) return false;
 
 		$wid 		= mysql_real_escape_string($wid);
 		$wname 		= mysql_real_escape_string($wname);
 		$wprice 	= mysql_real_escape_string($wprice);
 		$woffer 	= mysql_real_escape_string($woffer);
+		$wpic 		= mysql_real_escape_string($wpic);
 
 		$sql = "
 			UPDATE `finder_goods` 
 			SET 
 				`fgname`		= '{$wname}',
 				`fgprice`		= '{$wprice}',
-				`fgoffer`		= '{$woffer}'
+				`fgoffer`		= '{$woffer}',
+				`fgpic_url`		= '{$wpic}'
 			WHERE `fguid` = '{$wid}'  ;";
 
 		mysql_query($sql) or $this->finder_error("Update Woods Error.", mysql_error(), 888 );
 	}
 
-	function create_woods($wid, $wname, $wprice, $woffer, $wcategory = '') {
+	function create_woods($wid, $wname, $wprice, $woffer, $wcategory = '', $wpic) {
 		if(empty($wid) || empty($wname)) return false;
 
 		$wid 		= mysql_real_escape_string($wid);
 		$wname 		= mysql_real_escape_string($wname);
 		$wprice 	= mysql_real_escape_string($wprice);
 		$woffer 	= mysql_real_escape_string($woffer);
+		$wpic 		= mysql_real_escape_string($wpic);
 
 		$wprice = preg_replace('/\D/', '', $wprice);
 		$woffer = preg_replace('/\D/', '', $woffer);
@@ -155,7 +176,7 @@ class Finder {
 		$chk_woods = $this->find_woods($primary_id);
 
 		if(count($chk_woods) > 0) {
-			$this->update_woods($primary_id, $wname, $wprice, $woffer);
+			$this->update_woods($primary_id, $wname, $wprice, $woffer, $wpic);
 			return true;
 		}
 
@@ -164,8 +185,8 @@ class Finder {
 		}
 
 		$sql = "
-			INSERT INTO `finder_goods` (`fguid`, `fgsid`, `fgname`, `fgprice`, `fgoffer`, `fgtype`, `fgupdate_time`, `fgcreate_time`) 
-			VALUES ('{$primary_id}', '{$wid}', '{$wname}', '{$wprice}', '{$woffer}', '{$this->current_type['ftuid']}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
+			INSERT INTO `finder_goods` (`fguid`, `fgsid`, `fgname`, `fgprice`, `fgoffer`, `fgpic_url`, `fgtype`, `fgupdate_time`, `fgcreate_time`) 
+			VALUES ('{$primary_id}', '{$wid}', '{$wname}', '{$wprice}', '{$woffer}', '{$wpic}', '{$this->current_type['ftuid']}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
 		
 		mysql_query($sql) or $this->finder_error("Create Woods Error.", mysql_error(), 888 );
 	}

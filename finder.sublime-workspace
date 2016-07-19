@@ -4,80 +4,40 @@
 		"selected_items":
 		[
 			[
-				"de",
-				"decode_woods_code"
+				"fb_return",
+				"fb_return"
 			],
 			[
-				"data",
-				"data_array"
-			],
-			[
-				"find",
-				"finder_log"
-			],
-			[
-				"html",
-				"html_url"
-			],
-			[
-				"str",
-				"str_html_code"
-			],
-			[
-				"Arr",
-				"ArraytoString"
+				"fb_ret",
+				"fb_return_json"
 			],
 			[
 				"json",
 				"json_decode"
 			],
 			[
-				"Or",
-				"Order_trans"
+				"css",
+				"css_url"
 			],
 			[
-				"strto",
-				"strtolower"
+				"sel",
+				"select_data"
 			],
 			[
-				"Order",
-				"OrderModel"
+				"ra",
+				"ray_data_count"
 			],
 			[
-				"Ord",
-				"OrderModel"
+				"ray_d",
+				"ray_data"
 			],
 			[
-				"botime",
-				"botime_end"
+				"ray_data",
+				"ray_data_count"
 			],
 			[
-				"a",
-				"aItem"
-			],
-			[
-				"var",
-				"var_dump"
-			],
-			[
-				"flow",
-				"flow_psot_data"
-			],
-			[
-				"order",
-				"order_chk"
-			],
-			[
-				"user",
-				"user_order_chk"
-			],
-			[
-				"this",
-				"thisLoopValue"
-			],
-			[
-				"book",
-				"book_data"
+				"Star",
+				"StarModel"
 			],
 			[
 				"ajax_cast",
@@ -86,6 +46,10 @@
 			[
 				"dashboard",
 				"dashboard_g"
+			],
+			[
+				"find",
+				"findtalent_4"
 			],
 			[
 				"member",
@@ -124,6 +88,10 @@
 				"fb_data"
 			],
 			[
+				"book",
+				"book_context"
+			],
+			[
 				"upload",
 				"upload_state"
 			],
@@ -143,22 +111,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "class_finder.php",
-			"settings":
-			{
-				"buffer_size": 7232,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "momo.php",
-			"settings":
-			{
-				"buffer_size": 2264,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -232,152 +184,146 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/Applications/MAMP/htdocs/finder"
-	],
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/finder/class_finder.php",
-		"/Applications/MAMP/htdocs/finder/momo.php",
-		"/Users/wayne/Desktop/06.txt",
-		"/Applications/MAMP/htdocs/finder/pchome.php",
-		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/Applications/MAMP/htdocs/finder/cookie.txt",
-		"/Applications/MAMP/htdocs/haNovel/assets/customJs/order.js",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/admin_order_book_list.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/admin_vote_article.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/ordermodel.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/users_order.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/admin_order_book_current.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/admin_order.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/users_order_pay_page.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/admin_author_accounting.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/users_buy_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/classify_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/classifys.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/classify.php",
-		"/Applications/MAMP/htdocs/haNovel/application/core/MY_Controller.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/index_m.php",
-		"/private/var/folders/rw/_wcg6l151m56tywvjg53btmc0000gn/T/17597b69-0239-4f81-b61b-62ec80be1958/haNovel/application/models/index_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/books.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/website.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/book.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/users_order_paied.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/admin_order_book_detial.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/authorAccounting.php",
-		"/Applications/MAMP/htdocs/haNovel/scheduling/oneDayByOneScheduling.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/treasureStore.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/treasure_store.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/login.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/users_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/multilingual_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/transaction.php",
-		"/Applications/MAMP/htdocs/haNovel/application/core/WebsiteConfig.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/background_transaction.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/back_ground.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/author.php",
-		"/Users/wayne/Downloads/3eaba7d7-dea6-41ed-825d-19ee1ff7b11f (3)/3eaba7d7-dea6-41ed-825d-19ee1ff7b11f.html",
-		"/Applications/MAMP/htdocs/haNovel/application/models/transaction_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/transaction_website.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/tranactionResult.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/my_setting.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/lottery_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/lottery.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/admin_order_book_pre_buy.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/voteArticleWeekRank.php",
-		"/Applications/MAMP/htdocs/haNovel/scheduling/voteSchdeuling.php",
-		"/private/var/folders/rw/_wcg6l151m56tywvjg53btmc0000gn/T/fz3temp-1/Star.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/apply_author.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/news.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/my_transaction.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/myTransaction.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/users_pre_order_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/chapter.php",
-		"/Users/wayne/Desktop/latest.dump",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/preOrderBook.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/index.php",
-		"/Applications/MAMP/htdocs/haNovel/assets/customJs/config.js",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/include/sliderbar.php",
-		"/Applications/MAMP/htdocs/haNovel/index.php",
-		"/Applications/MAMP/htdocs/haNovel/assets/themeKing/css/main.css",
-		"/Applications/MAMP/htdocs/haNovel/assets/customJs/ngDialog.min.js",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/preOrder.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/include/meta.php",
-		"/Applications/MAMP/logs/php_error.log",
-		"/Applications/MAMP/htdocs/haNovel/assets/customJs/websiteConfig.js",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/adminInformation.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/admin_admin_information.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/admin_multilingual.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/admin.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/books_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/pre_order_book.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/admin/login.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/vote_article_list.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/voteArticleList.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/include/nav.php",
-		"/Applications/MAMP/htdocs/haNovel/application/controllers/vote_article_week_rank.php",
-		"/Applications/MAMP/htdocs/haNovel/application/models/votes_m.php",
-		"/Applications/MAMP/htdocs/haNovel/application/config/database.php",
-		"/Applications/MAMP/htdocs/haNovel/phpLibraries/geoip/geoip.inc",
-		"/Applications/MAMP/htdocs/haNovel/application/views/author/login.php",
-		"/Applications/MAMP/htdocs/haNovel/application/views/author/fullBook.php",
-		"/Applications/MAMP/htdocs/haNovel/.htaccess",
-		"/Applications/MAMP/htdocs/haNovel/application/views/website/include/meta.php",
-		"/Applications/MAMP/htdocs/haNovel/application/config/config.php",
-		"/Applications/MAMP/conf/apache/httpd.conf",
-		"/Applications/MAMP/bin/php/php5.5.26/conf/php.ini",
-		"/Applications/MAMP/htdocs/showcase/application/views/frontend/menu.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/actor_info.php",
+		"/Applications/MAMP/htdocs/showcase/application/controllers/Star.php",
+		"/Applications/MAMP/htdocs/showcase/application/models/query/Query.php",
 		"/Applications/MAMP/htdocs/showcase/application/controllers/Member.php",
+		"/Users/wayne/Downloads/Program.cs",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_index.php",
+		"/Applications/MAMP/htdocs/showcase/application/config/config.php",
+		"/Applications/MAMP/htdocs/showcase/application/models/query/Starmodel.php",
+		"/Applications/MAMP/htdocs/showcase/application/models/frontend/Main.php",
+		"/Users/wayne/Desktop/PROJECT/SHOWCASE/showcase.sublime-project",
+		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/Users/wayne/Desktop/PROJECT/SHOWCASE/github_SHOWCASE/showcase/application/controllers/Member.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_event.php",
+		"/Applications/MAMP/htdocs/showcase/application/config/database.php",
+		"/Applications/MAMP/htdocs/showcase/application/models/query/Usermodel.php",
+		"/Applications/MAMP/htdocs/showcase/application/libraries/Lib_login.php",
+		"/Applications/MAMP/htdocs/showcase/application/libraries/Recaptcha.php",
+		"/Applications/MAMP/htdocs/showcase/application/config/recaptcha.php",
+		"/Applications/MAMP/htdocs/showcase/application/controllers/Fb.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/dashboard2.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_send.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_iforget.php",
+		"/Applications/MAMP/htdocs/showcase/application/controllers/Register.php",
+		"/Applications/MAMP/htdocs/showcase/sftp-config.json",
+		"/Applications/MAMP/htdocs/showcase/application/language/zh-cn/zh-cn_lang.php",
+		"/Applications/MAMP/htdocs/showcase/application/language/zh-tw/zh-tw_lang.php",
+		"/Applications/MAMP/htdocs/showcase/application/models/Ajaxs_m.php",
+		"/Users/wayne/Downloads/3eaba7d7-dea6-41ed-825d-19ee1ff7b11f (1)/e_paper_star.php",
+		"/Applications/MAMP/htdocs/o_showcase/application/config/database.php",
+		"/Users/wayne/Desktop/PROJECT/SHOWCASE/github_SHOWCASE/showcase/application/views/frontend/star_event.php",
+		"/private/var/folders/rw/_wcg6l151m56tywvjg53btmc0000gn/T/fz3temp-1/Star.php",
+		"/Applications/MAMP/htdocs/showcase/application/config/facebook.php",
+		"/Applications/MAMP/htdocs/showcase/application/composer.lock",
+		"/Applications/MAMP/htdocs/showcase/application/composer.json",
+		"/Applications/MAMP/htdocs/showcase/application/libraries/lib_login.php",
+		"/Applications/MAMP/htdocs/showcase/application/vendor/facebook/php-sdk-v4/Facebook.php",
+		"/Applications/MAMP/htdocs/showcase/application/vendor/facebook/php-sdk-v4/autoload.php",
+		"/Applications/MAMP/htdocs/showcase/application/vendor/facebook/php-sdk-v4/src/Facebook/autoload.php",
+		"/Applications/MAMP/htdocs/showcase/application/config/autoload.php",
+		"/Applications/MAMP/htdocs/showcase/index.php",
+		"/Applications/MAMP/htdocs/showcase/application/libraries/facebook.php",
+		"/private/var/folders/rw/_wcg6l151m56tywvjg53btmc0000gn/T/fz3temp-1/Home.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_real_login.php",
+		"/Applications/MAMP/htdocs/showcase/application/controllers/Home.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/engagement/dashboard2.php",
+		"/Applications/MAMP/htdocs/showcase/application/core/MY_Controller.php",
+		"/Applications/MAMP/htdocs/showcase/assets/js/angular-easyfb.js",
 		"/Applications/MAMP/htdocs/showcase/application/views/frontend/casting_detail.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_login.php",
+		"/Applications/MAMP/htdocs/showcase/index.html",
+		"/Applications/MAMP/htdocs/showcase/assets/css/star.css",
+		"/Applications/MAMP/htdocs/showcase/application/models/query/Manage_getuser.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/manage2.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/newJob.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/newJobStep3.php",
+		"/Applications/MAMP/htdocs/showcase/application/config/user_agents.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/memberJobs.php",
+		"/Applications/MAMP/htdocs/showcase/.htaccess",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_handle.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_notice.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/header.php",
+		"/Applications/MAMP/htdocs/showcase/application/models/frontend/Search.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/findtalent.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/casting.php",
+		"/Applications/MAMP/htdocs/showcase/assets/css/anbon.css",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/index.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/menuless.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/footer.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/actorRemind.php",
+		"/Applications/MAMP/htdocs/showcase/assets/js/ng-infinite-scroll.min.js",
+		"/Applications/MAMP/htdocs/showcase/application/views/newsModal.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/menu.php",
+		"/Applications/MAMP/htdocs/showcase/assets/plugins/jQuery-File-Upload/jquery.uploadfile.min.js",
+		"/Applications/MAMP/htdocs/showcase/application/controllers/Engagement.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/frontend/menu.php",
 		"/Applications/MAMP/htdocs/showcase/application/models/frontend/Initial_db_data.php",
 		"/Applications/MAMP/htdocs/showcase/application/views/engagement/engagement.php",
-		"/Applications/MAMP/htdocs/showcase/application/controllers/Register.php",
 		"/Applications/MAMP/htdocs/showcase/application/views/register/uploadMemberTypeForm.php",
-		"/Applications/MAMP/htdocs/showcase/application/controllers/Home.php",
-		"/Applications/MAMP/htdocs/showcase/application/controllers/Engagement.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/engagement/dashboard2.php",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/CodeFormatter.sublime-settings",
-		"/Applications/MAMP/htdocs/showcase/application/views/frontend/casting.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/frontend/findtalent.php",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/Users/wayne/Desktop/PROJECT/carbon_html_backend/index.html",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/phpcbf.sublime-settings",
-		"/Applications/MAMP/htdocs/showcase/application/language/zh-cn/zh-cn_lang.php",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/phpfmt.sublime-settings",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
-		"/Applications/MAMP/htdocs/showcase/application/views/frontend/actor_info.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/frontend/star_login.php",
-		"/Applications/MAMP/htdocs/showcase/application/controllers/Star.php",
-		"/Applications/MAMP/htdocs/showcase/application/core/MY_Controller.php",
 		"/Applications/MAMP/htdocs/showcase/application/views/backend/memberEditForm.php",
 		"/Applications/MAMP/htdocs/showcase/application/views/frontend/contactUs.php",
-		"/Applications/MAMP/htdocs/showcase/application/models/query/Usermodel.php",
-		"/Applications/MAMP/htdocs/showcase/application/language/zh-tw/zh-tw_lang.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/backend/memberJobs.php",
 		"/Applications/MAMP/htdocs/showcase/application/views/backend/newMemberForm.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/backend/newJob.php",
-		"/Applications/MAMP/htdocs/showcase/index.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/backend/manage2.php",
 		"/Applications/MAMP/htdocs/showcase/application/views/backend/manage.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/footer.php",
-		"/Applications/MAMP/htdocs/showcase/application/views/backend/dashboard2.php",
 		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/phpfmt/message",
-		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/phpfmt/phpfmt.sublime-settings"
+		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/phpfmt/phpfmt.sublime-settings",
+		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/Default.sublime-keymap",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/dashboard.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/applyRecord.php",
+		"/Applications/MAMP/htdocs/showcase/application/views/backend/auditionGantt.php",
+		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/wayne/Library/Application Support/Sublime Text 3/Packages/User/SFTP.sublime-settings",
+		"/private/var/folders/rw/_wcg6l151m56tywvjg53btmc0000gn/T/fz3temp-1/autoload.php",
+		"/Users/wayne/Documents/blog/weienchou.github.com/_config.yml",
+		"/Applications/MAMP/htdocs/showcase/application/controllers/star.php",
+		"/Applications/MAMP/htdocs/carbon/application/controllers/Home.php",
+		"/Applications/MAMP/htdocs/carbon/application/models/HomeModel.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/_site_header.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/admin_epaper_template_part.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/admin_epaper_template.php",
+		"/Applications/MAMP/htdocs/carbon/application/models/EpaperModel.php",
+		"/Applications/MAMP/htdocs/carbon/application/controllers/handle/Admin.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/admin_epaper_mail.php",
+		"/Applications/MAMP/htdocs/carbon/application/controllers/handle/Book.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/admin_epaper.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/_nav.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/book_edit.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/_site_nav.php",
+		"/Applications/MAMP/htdocs/carbon/assets/css/style.css",
+		"/Applications/MAMP/htdocs/carbon/assets/js/main.js",
+		"/Applications/MAMP/htdocs/carbon/application/views/_site_footer.php",
+		"/Applications/MAMP/htdocs/carbon/application/controllers/handle/Member.php",
+		"/Applications/MAMP/htdocs/carbon/index.php",
+		"/Applications/MAMP/htdocs/carbon/application/controllers/handle/Share.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/home_book.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/home_index.php",
+		"/Applications/MAMP/htdocs/carbon/application/models/HoMeModel.php",
+		"/Applications/MAMP/htdocs/carbon/application/models/CloudModel.php",
+		"/Applications/MAMP/htdocs/carbon/application/controllers/handle/User.php",
+		"/Applications/MAMP/htdocs/carbon/application/views/book_add.php",
+		"/private/var/folders/rw/_wcg6l151m56tywvjg53btmc0000gn/T/fz3temp-1/Book.php"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
-			"/Applications/MAMP/htdocs/haNovel/application/controllers",
-			"/Applications/MAMP/htdocs/haNovel/application/views/website",
 			"/Applications/XAMPP/xamppfiles/htdocs/showcase/application/views/frontend",
 			""
 		]
@@ -387,134 +333,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"child_pid",
-			"set_exception_handler",
-			"finder_error_handle",
-			"finder_error",
-			"font",
-			"MySQL finder log error",
-			"0",
-			"decode_html_code",
-			"str_html_code",
-			"html_url",
-			"html",
-			"html_url",
-			"fgcategory",
-			"die()",
-			".');",
-			"create_category",
-			"create_relation",
-			"finder relation",
-			"create_category",
-			"create_relation",
-			"create_woods",
-			"mysql_query",
-			"create_relation",
-			"cid",
-			"find_category",
-			"create_category",
-			"update_category",
-			"finder_log",
-			"mysqli",
-			"current_type",
-			"header",
-			"response",
-			"$ch",
-			"aCurlopt",
-			"CURLOPT_NOBODY",
-			"$ch",
-			"input",
-			"header",
-			"$aFinder",
-			"Finder",
-			"$v",
-			"va",
-			"$pid",
-			"pid",
-			"children",
-			"now_type",
-			"Pchome",
-			"$d",
-			"$c",
-			"$a",
-			"a",
-			"A",
-			"a",
-			"A",
-			"a",
-			"input",
-			"ch",
-			"hideWait",
-			"changeKeyArray",
-			"preOrderBookTitle",
-			"preOrderBookView",
-			"h3",
-			"authorAuthorStore",
-			"get_vote_book",
-			"get_book_by_userID",
-			"NULL",
-			"get_data_pre_buy_for_book",
-			"bookPreOrder",
-			"getEmailUser",
+			"set_userdata",
+			"login()",
+			"7",
+			"9",
+			"isset",
+			"echo",
+			"id",
+			"name",
+			"update_vote_Valid",
+			"email",
+			"real_login",
+			"educationUploadForm",
+			"registerConfirm",
+			"親愛的",
+			"send",
+			"fallbackSrc",
+			"session",
+			"console.log",
+			"title",
+			"localhost",
+			"checkDoubleMail",
+			"e_paper",
+			"login_status",
+			"電子信箱",
+			"isLogin",
+			"login(",
+			"login",
+			"reg_process",
+			"vote",
+			"star_vote",
+			"user_check",
+			"return",
+			"register",
+			"isLogin && ",
+			"registerPage",
+			"boumin_share",
+			"star_share",
+			"chk_boumin",
+			"forget",
+			"email",
+			"</script>",
+			"),\n",
+			"success",
+			"fb_register",
 			"<?",
-			"/<?\\($\\|[^p]\\)",
-			"return null;",
-			"null",
-			"href_vote_list",
-			"href_book_list",
-			"x",
-			"	",
-			"optionUserCompetence",
-			"href_book_list",
-			"cre",
-			"mailing_5",
-			"bill_final_mail",
-			"getRule",
-			"recommendBooks",
-			"getClassifyLength",
-			"thisMenuKey",
-			"classifyId",
-			"adBanners",
-			"getNum",
-			"預購本數",
-			", '收貨方式'",
-			"----------------------------------------",
-			"date",
-			"boqnum_currency_ispaied",
-			"mailing_change",
-			"送貨，",
-			"，用 ",
-			"paytogo_cancel",
-			"mailing_change",
-			"$scope.pre_num",
-			"parseInt",
-			"$scope.pre_num_notice = '';",
-			"$scope.shipment",
-			"check_mailing",
-			"check_mpay",
-			"mailing_9",
-			"<input",
-			"clock",
-			"mailing_2",
-			"1",
-			"PaymentType",
-			"NTCB",
-			"createTransaction",
-			"alipay",
-			"/<?\\($\\|[^p]\\)",
-			"console",
-			"bill",
-			"get_users_order",
-			"button",
-			"a",
-			" href=\"#\"",
-			"update_order_list",
-			"get_users_order",
-			"href_get_book_users_order",
-			"update_order_list",
-			"寄信",
-			"href_confirm_ship",
-			"sendEmail"
+			"r_data",
+			"fb_data_parse->",
+			"2.5",
+			"2.4",
+			"member",
+			"engagement",
+			"isLogin(",
+			"engagement",
+			"#e06666",
+			"#e47b7b",
+			"og",
+			"-23",
+			"isLogin()",
+			"isLogin",
+			"_POST",
+			"json_encode",
+			"uploadAvatar",
+			"20",
+			"login(",
+			"real",
+			"reallogin",
+			"share",
+			"ui",
+			"18",
+			"14",
+			"19",
+			"actor_aud",
+			"changeIdentity",
+			"29",
+			"updateUserData",
+			"star_boumin",
+			"session",
+			"users_collaborate",
+			"editJob",
+			"合約",
+			"items",
+			"modal-body",
+			"alert_modal",
+			"modal",
+			"th",
+			"vote_data",
+			"array",
+			"capital",
+			"ver_context2",
+			"ver_contextㄉ",
+			"get_boumin",
+			"show",
+			"201604",
+			"\"",
+			"(empty($v)) ?",
+			"result",
+			"ajaxquery",
+			"data",
+			"this->session->userdata[\"user\"]['avatar']",
+			"this->session->userdata[\"user\"]['username']",
+			"tmp",
+			"login",
+			"W",
+			"w",
+			"span",
+			"memberE_l",
+			"cast_modal_add_title",
+			"select_castrole_search_chosen",
+			"modal-body",
+			"chosen-container chosen-container-single chosen-container-single-nosearch",
+			"hasTagNation",
+			"logo_zh",
+			"201604",
+			".js",
+			"js",
+			"201604",
+			"process_pre_chk_boumin",
+			"pre_chk",
+			"callback",
+			"star_wait",
+			"actorRemind_noUsername_noUsername",
+			"actorRemind_noUsername",
+			"actorRemind_noAvatar",
+			"上傳",
+			"query(",
+			"query",
+			"die(",
+			".css"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -522,6 +468,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"#337ab7",
 			"//console.log"
 		],
 		"reverse": false,
@@ -533,73 +480,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "class_finder.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7232,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1022,
-								1022
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 580.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "momo.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2264,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								918,
-								918
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -636,11 +518,15 @@
 	"menu_visible": true,
 	"output.find_results":
 	{
-		"height": 100.0
+		"height": 0.0
 	},
 	"output.sftp":
 	{
 		"height": 100.0
+	},
+	"output.xdebug":
+	{
+		"height": 204.0
 	},
 	"pinned_build_system": "",
 	"project": "finder.sublime-project",
@@ -655,6 +541,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"xdebug",
+				"Xdebug Breakpoint"
+			],
 			[
 				"190",
 				"assets/plugins/dhtmlxGantt/samples/01_initialization/09_backward_compatibility.html"
@@ -683,10 +573,6 @@
 	"selected_group": 0,
 	"settings":
 	{
-		"xdebug":
-		{
-			"hide_conflict": false
-		}
 	},
 	"show_minimap": true,
 	"show_open_files": false,

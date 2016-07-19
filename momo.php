@@ -2,6 +2,7 @@
 
 $Finder = new Finder('momo');											// 建立 Finder
 
+$Finder->set_start_time();
 if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loop_value) {
 	$loop_page = 1;
 
@@ -14,10 +15,9 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 
 		// 沒有搜尋到 {"rtnMsg":"success!","rtnCode":200,"rtnData":{"totCnt":0}}
 		// 有錯誤 {"rtnMsg":"parameter incomplete","rtnCode":501,"rtnData":{}}
-		$decode_woods_code = json_decode($str_woods_code);		
+		$decode_woods_code = json_decode($str_woods_code);
 
 		if(is_null($decode_woods_code)) continue;
-
 		if($decode_woods_code->rtnCode != 200) continue;
 		if($decode_woods_code->rtnData->totCnt == 0) continue;
 
@@ -35,12 +35,24 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 
 	}
 }
+$Finder->set_stop_time();
+$Finder->show_time();
+
+function parse_image_url ($wuid) {										// momo 圖片網址 生成
+	$input_line = sprintf('%010d', $wuid);
+	$output = array();
+	preg_match('/([0-9]{4})([0-9]{3})([0-9]{3})/', $input_line, $output);
+	if(count($output) != 4) return '';
+	$str_output = $output[1].'/'.$output[2].'/'.$output[3].'/'.$wuid.'_R.jpg';
+
+	return $str_output;
+}
 
 function parse_woods_json ($aFinder, $data_array) {						// 分析 json 並儲存
 	$category_ray = Array();
 	if(count($data_array) > 0) foreach($data_array as $loop_data) {
-		//var_dump($aFinder->current_type); die();
-		$aFinder->create_woods($loop_data->GOODS_CODE, $loop_data->GOODS_NAME, 0, $loop_data->SALE_PRICE);		
+		$wpic_url = parse_image_url($loop_data->GOODS_CODE);
+		$aFinder->create_woods($loop_data->GOODS_CODE, $loop_data->GOODS_NAME, 0, $loop_data->SALE_PRICE, '', $wpic_url);		
 
 		$category_ray = explode('##', $loop_data->CATEGORY_CODE);
 
@@ -55,7 +67,7 @@ function parse_woods_json ($aFinder, $data_array) {						// 分析 json 並儲�
 }
 
 function parse_category_json ($aFinder, $woods_name, $data_array, $level) {					// 分析 json 並儲存
-	for($i = 0; $i <= $level; $i++) echo '－';
+	//for($i = 0; $i <= $level; $i++) echo '－';
 	if($level > 0) return;
 	if(count($data_array) > 0) foreach($data_array as $loop_data) {
 
