@@ -16,8 +16,8 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 
 	//var_dump($decode_woods_code); die();
 
-	main_process($Finder, $loop_value, $decode_woods_code);
-	//process_parse($Finder, $loop_value, $decode_woods_code);
+	//main_process($Finder, $loop_value, $decode_woods_code);
+	process_parse($Finder, $loop_value, $decode_woods_code);
 }
 $Finder->set_stop_time();
 $Finder->show_time();
@@ -93,7 +93,7 @@ function process_parse ($aFinder, $keywords, $category_ray) {
 			// echo '　　取得 類別 <br />';
 			$ray_woods = get_woods($aFinder, $str_woods_code);		
 			// echo '　　取得 商品 <br />';
-			echo $woods_url.'<br />';
+			// echo $woods_url.'<br />';
 			save_woods($aFinder, $v->category_id, $ray_woods);	
 			// echo '　　儲存 商品 <br />';
 			// echo '　　用 process_parse start <br />';
@@ -139,10 +139,8 @@ function get_category ($aFinder, $html_code) {
 
 function get_woods($aFinder, $html_code) {
 	$retrun_parse = array();
-	preg_match_all("/<div class=\"item yui3-.*\">[\\s\\S]{1,100}<a href=\".*gdid=(\\d+)\" title=\"(.*)\">[\\s\\S]{1,200}<img[\\s\\S]{1,200}src=\".*images\\/(.*)\">[\\s\\S]{1,1000}<span class=\"srp-promo.*\">[\\s\\S]{1,100}<em>(.*)<\\/em>/", $html_code, $retrun_parse);
+	preg_match_all("/<div class=\\\"item yui3-.*\\\">[\\s\\S]{1,100}<a href=\\\".*gdid=(\\d+)\\\" title=\\\"(.*)\\\">[\\s\\S]{1,200}<img[\\s\\S]{1,200}src=\\\".*images\\/(.*)\\\">[\\s\\S]{1,1000}<span class=\\\"srp-promo.*\\\">[\\s\\S]{1,100}<em>(.*)<\\/em>/u", $html_code, $retrun_parse);
 	$array_finder_item = array();
-
-	var_dump($retrun_parse); die();
 
 	if(count($retrun_parse[0]) > 0) foreach($retrun_parse[0] as $k => $v) {
 		$array_finder_item[$k] = (object)Array(
@@ -165,5 +163,5 @@ function save_woods ($aFinder, $cateid, $data_array) {
 			$cateid, 
 			$v->woods_pic_url);
 	}
-	echo '＞儲存 ('.count($data_array).') 筆商品 <br />';
+	// echo '＞儲存 ('.count($data_array).') 筆商品 <br />';
 }
