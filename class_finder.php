@@ -3,6 +3,7 @@ class Finder {
 	var $current_type = Array();
 	var $current_keyword = Array();
 	var $repeat_category = Array();
+	var $tmp_category = Array();
 
 	var $start_time = '';
 	var $stop_time = '';
@@ -42,6 +43,7 @@ class Finder {
 
 	function show_time() {
 		$diff = floor($this->stop_time-$this->start_time);
+		echo '<hr />';
 		echo 'Start '.date('Y/m/d H:i:s', $this->start_time).' . <br />';
 		echo 'Stop '.date('Y/m/d H:i:s', $this->stop_time).' . <br />';
 		echo 'Spend '.$diff.' s. <br />';
@@ -67,7 +69,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'不給你找到..........'
+			'kor'
 		);
 	}
 
@@ -85,7 +87,7 @@ class Finder {
 	        CURLOPT_AUTOREFERER    => true,
 	        CURLOPT_CONNECTTIMEOUT => 120,
 	        CURLOPT_TIMEOUT        => 120,
-	        CURLOPT_COOKIEJAR	   => $this->current_type['ftname'].'_cookie.txt',
+	        CURLOPT_COOKIEJAR	   => 'cookie/'.$this->current_type['ftname'].'_cookie.txt',
 	    ); 
 
 	    if($post == true && !empty($post_data)) {
@@ -124,6 +126,7 @@ class Finder {
 	}
 
 	function find_woods($wid) {
+		// echo '　　find_woods '.$wid.'<br />';
 		$sql = "
 			SELECT * 
 			FROM `finder_goods` 
@@ -141,6 +144,7 @@ class Finder {
 
 	function update_woods($wid, $wname, $wprice, $woffer, $wpic) {
 		if(empty($wid) || empty($wname)) return false;
+		// echo '　update_woods '.$wid.'<br />';
 
 		$wid 		= mysql_real_escape_string($wid);
 		$wname 		= mysql_real_escape_string($wname);
@@ -162,6 +166,7 @@ class Finder {
 
 	function create_woods($wid, $wname, $wprice, $woffer, $wcategory = '', $wpic) {
 		if(empty($wid) || empty($wname)) return false;
+		// echo 'create_woods '.$wid.'<br />';
 
 		$wid 		= mysql_real_escape_string($wid);
 		$wname 		= mysql_real_escape_string($wname);
@@ -175,13 +180,13 @@ class Finder {
 		$primary_id = md5($wid);
 		$chk_woods = $this->find_woods($primary_id);
 
+		if(!empty($wcategory)) {
+			$this->create_relation($wcategory, $primary_id);
+		}
+
 		if(count($chk_woods) > 0) {
 			$this->update_woods($primary_id, $wname, $wprice, $woffer, $wpic);
 			return true;
-		}
-
-		if(!empty($wcategory)) {
-			$this->create_relation($wcategory, $primary_id);
 		}
 
 		$sql = "
