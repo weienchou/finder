@@ -1,9 +1,9 @@
 # finder 使用說明
 *	使用 GET 傳入參數
 *	參數 keyword 
-	keyword 關鍵字，字串
+	關鍵字，字串
 *	參數 limit
-	limit 關鍵字，數字
+	關鍵字，數字
 	預設 -1 無限制
 	傳入非數字，使用預設
 
