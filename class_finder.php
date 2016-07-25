@@ -24,7 +24,7 @@ class Finder {
 
 		if($_GET) {
 			if(isset($_GET['keyword']) && !empty($_GET['keyword'])) {
-				$this->current_keyword = mysqli_real_escape_string($_GET['keyword']);
+				$this->current_keyword = (array)mysql_real_escape_string($_GET['keyword']);
 			} else {
 				$this->get_keyword();
 			}
