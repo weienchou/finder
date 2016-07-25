@@ -4,6 +4,8 @@ class Finder {
 	var $current_keyword = Array();
 	var $repeat_category = Array();
 	var $tmp_category = Array();
+	var $limit_woods = -1;
+	var $current_limit_woods = 0;
 
 	var $start_time = '';
 	var $stop_time = '';
@@ -19,7 +21,21 @@ class Finder {
 
 		$this->db_connect();
 		$this->check_type($type);
-		$this->get_keyword();
+
+		if($_GET) {
+			if(isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+				$this->current_keyword = mysqli_real_escape_string($_GET['keyword']);
+			} else {
+				$this->get_keyword();
+			}
+
+			if(isset($_GET['limit']) && !empty($_GET['limit'])) {
+				$is_int = ( !is_int($_GET['limit']) ? (ctype_digit($_GET['limit'])) : true );
+				$this->limit_woods = ($is_int) ? $_GET['limit'] : -1;
+			}
+		} else {
+			$this->get_keyword();
+		}
 	}
 
 	// 資料庫連線 function
@@ -69,7 +85,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'kor'
+			'anidees'
 		);
 	}
 
@@ -166,6 +182,8 @@ class Finder {
 
 	function create_woods($wid, $wname, $wprice, $woffer, $wcategory = '', $wpic) {
 		if(empty($wid) || empty($wname)) return false;
+
+		if($this->current_limit_woods >= $this->limit_woods && $this->limit_woods != -1) $this->finder_error("It's Out of limit.", '', 900 );
 		// echo 'create_woods '.$wid.'<br />';
 
 		$wid 		= mysql_real_escape_string($wid);
@@ -192,6 +210,8 @@ class Finder {
 		$sql = "
 			INSERT INTO `finder_goods` (`fguid`, `fgsid`, `fgname`, `fgprice`, `fgoffer`, `fgpic_url`, `fgtype`, `fgupdate_time`, `fgcreate_time`) 
 			VALUES ('{$primary_id}', '{$wid}', '{$wname}', '{$wprice}', '{$woffer}', '{$wpic}', '{$this->current_type['ftuid']}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
+
+		$this->current_limit_woods += 1;
 		
 		mysql_query($sql) or $this->finder_error("Create Woods Error.", mysql_error(), 888 );
 	}
