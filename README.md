@@ -7,7 +7,11 @@
 	預設 -1 無限制
 	傳入非數字，使用預設
 
-## 取得 商品以及商品類別
+## GOHAPPY
+*	關鍵字 apple 一頁 20 筆，約 893 頁
+	
+
+### 取得 商品以及商品類別
 SELECT `finder_goods`.`fgname`, group_concat(`finder_category`.`fcname` SEPARATOR ' | ') AS category
 
 FROM `finder_goods`

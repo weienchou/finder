@@ -85,7 +85,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'anidees'
+			'apple'
 		);
 	}
 
@@ -102,21 +102,13 @@ class Finder {
 	        CURLOPT_USERAGENT      => 'Mozilla/5.0 (WAYNE) Gecko/20120101 Firefox/33.0',
 	        CURLOPT_AUTOREFERER    => true,
 	        CURLOPT_CONNECTTIMEOUT => 120,
-	        CURLOPT_TIMEOUT        => 120,
+	        CURLOPT_TIMEOUT        => 180,
 	        CURLOPT_COOKIEJAR	   => 'cookie/'.$this->current_type['ftname'].'_cookie.txt',
+	        CURLOPT_BUFFERSIZE	   => 128,
+	        CURLOPT_COOKIEFILE	   => 'cookie/'.$this->current_type['ftname'].'_cookie.txt'
 	    ); 
 
 	    if($post == true && !empty($post_data)) {
-	    	/*
-			$post_data = implode('&', array_map( function ($v, $k) {
-		        if(is_array($v)){
-		            return $k.'='.implode('&'.$k.'=', $v);
-		        }else{
-		            return $k.'='.$v;
-		        }
-			}, $post_data, array_keys($post_data)));
-			*/
-
 			$options[CURLOPT_POST] = true;
 			$options[CURLOPT_POSTFIELDS] = http_build_query($post_data);
 	    }
@@ -126,7 +118,7 @@ class Finder {
 
 	    $response_html_code  = curl_exec($aCurlopt);
 
-	    if($response_html_code === false) $this->finder_error("Get Html Error.", '', 900 );
+	    if($response_html_code === false) $this->finder_error("Get Html Error.", '['.$url.'] '.curl_error($aCurlopt), 900 );
 
 	    $header_size = curl_getinfo($aCurlopt, CURLINFO_HEADER_SIZE);
 		$header = substr($response_html_code, 0, $header_size);
@@ -182,8 +174,6 @@ class Finder {
 
 	function create_woods($wid, $wname, $wprice, $woffer, $wcategory = '', $wpic) {
 		if(empty($wid) || empty($wname)) return false;
-
-		if($this->current_limit_woods >= $this->limit_woods && $this->limit_woods != -1) $this->finder_error("It's Out of limit.", '', 900 );
 		// echo 'create_woods '.$wid.'<br />';
 
 		$wid 		= mysql_real_escape_string($wid);
@@ -274,6 +264,7 @@ class Finder {
 
 	function create_category($cid, $cname) {
 		if(empty($cname) || empty($cid)) return false;
+		$cname 		= mysql_real_escape_string($cname);
 
 		$primary_id = md5($cid);
 		$chk_woods = $this->find_category($primary_id);
