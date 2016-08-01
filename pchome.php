@@ -7,7 +7,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 	$loop_page = 1;
 
 	$main_category_url = strtr($Finder->current_type['ftgetmaincategory_url'], Array(
-		'{$data}' => $loop_value,
+		'{$data}' => urlencode($loop_value),
 	));
 
 	$str_main_category_code = $Finder->get_html_code($main_category_url);
@@ -20,7 +20,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 	for($i = 1; $i <= $loop_page; $i++) {
 																		// 取得 商品 開始
 		$woods_url = strtr($Finder->current_type['ftgetwoods_url'], Array(
-			'{$data}' => $loop_value,
+			'{$data}' => urlencode($loop_value),
 			'{$page}' => $i
 		));
 
@@ -75,6 +75,8 @@ function parse_woods_json ($aFinder, $data_array) {						// 分析 json 並儲�
 			}
 		}
 		$category_ray[] = $loop_data->cateId;
+
+		if($aFinder->current_limit_woods >= $aFinder->limit_woods && $aFinder->limit_woods != -1) return $category_ray;
 	}
 	return $category_ray;
 }

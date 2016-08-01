@@ -6,7 +6,7 @@ $Finder->set_start_time();
 if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loop_value) {
 																		// 取得 商品 開始
 	$woods_url = strtr($Finder->current_type['ftgetwoods_url'], Array(
-		'{$data}' => $loop_value,
+		'{$data}' => urlencode($loop_value),
 		'{$page}' => 1
 	));
 
@@ -17,7 +17,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 	//var_dump($decode_woods_code); die();
 
 	//main_process($Finder, $loop_value, $decode_woods_code);
-	process_parse($Finder, $loop_value, $decode_woods_code);
+	process_parse($Finder, urlencode($loop_value), $decode_woods_code);
 }
 $Finder->set_stop_time();
 $Finder->show_time();
@@ -162,6 +162,7 @@ function save_woods ($aFinder, $cateid, $data_array) {
 			$v->woods_offer, 
 			$cateid, 
 			$v->woods_pic_url);
+		if($aFinder->current_limit_woods >= $aFinder->limit_woods && $aFinder->limit_woods != -1) return ;
 	}
 	// echo '＞儲存 ('.count($data_array).') 筆商品 <br />';
 }

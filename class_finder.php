@@ -85,7 +85,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'apple'
+			'iphone 64G'
 		);
 	}
 
@@ -228,6 +228,7 @@ class Finder {
 
 	function create_relation($rid, $wid) {
 		if(empty($wid) || empty($rid)) return false;
+		$rid = (strpos($rid, $this->current_type['ftname']) === false) ? $this->current_type['ftname'].'_'.$rid : $rid;
 
 		$primary_id = md5($rid);
 		$chk_relation = $this->find_relation($primary_id, $wid);
@@ -265,6 +266,7 @@ class Finder {
 	function create_category($cid, $cname) {
 		if(empty($cname) || empty($cid)) return false;
 		$cname 		= mysql_real_escape_string($cname);
+		$cid = (strpos($cid, $this->current_type['ftname']) === false) ? $this->current_type['ftname'].'_'.$cid : $cid;
 
 		$primary_id = md5($cid);
 		$chk_woods = $this->find_category($primary_id);
