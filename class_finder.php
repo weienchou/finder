@@ -85,7 +85,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'iphone 64G'
+			'moto 玻璃貼'
 		);
 	}
 
