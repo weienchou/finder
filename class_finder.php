@@ -12,6 +12,7 @@ class Finder {
 
 	function __construct($type) {
 		ini_set('max_execution_time', 0);
+		ini_set('memory_limit', '-1');
 
 		//*  // 我要顯示 error message
 		ini_set('display_errors', 1);
@@ -62,7 +63,7 @@ class Finder {
 		echo '<hr />';
 		echo 'Start '.date('Y/m/d H:i:s', $this->start_time).' . <br />';
 		echo 'Stop '.date('Y/m/d H:i:s', $this->stop_time).' . <br />';
-		echo 'Spend '.$diff.' s. <br />';
+		echo 'Spend '.$diff.' s. <br />Save '.$this->current_limit_woods.' Woods.';
 	}
 
 	// 檢查 construct type 是否有在 db 中
@@ -85,7 +86,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'moto 玻璃貼'
+			'apple'
 		);
 	}
 
