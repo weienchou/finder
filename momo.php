@@ -52,7 +52,7 @@ function parse_woods_json ($aFinder, $data_array) {						// 分析 json 並儲�
 	$category_ray = Array();
 	if(count($data_array) > 0) foreach($data_array as $loop_data) {
 		$wpic_url = parse_image_url($loop_data->GOODS_CODE);
-		$aFinder->create_woods($loop_data->GOODS_CODE, $loop_data->GOODS_NAME, 0, $loop_data->SALE_PRICE, '', $wpic_url);		
+		$aFinder->create_woods($loop_data->GOODS_CODE, $loop_data->GOODS_NAME, 0, $loop_data->SALE_PRICE, '', $loop_data->IMG_URL.$wpic_url);		
 
 		$category_ray = explode('##', $loop_data->CATEGORY_CODE);
 
@@ -69,7 +69,7 @@ function parse_woods_json ($aFinder, $data_array) {						// 分析 json 並儲�
 
 function parse_category_json ($aFinder, $woods_name, $data_array, $level) {					// 分析 json 並儲存
 	//for($i = 0; $i <= $level; $i++) echo '－';
-	if($level > 0) return;
+	if($level > 3) return;
 	if(count($data_array) > 0) foreach($data_array as $loop_data) {
 
 		if(!in_array($loop_data->CATEGORY_CODE, $aFinder->repeat_category)) {

@@ -15,6 +15,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 			'{$page}' => $i,
 			'{$pageno}' => $per_page,
 		));
+		echo $woods_url.'<br />';
 
 		$woods_html_code = $Finder->get_html_code($woods_url);
 
@@ -28,7 +29,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 		}
 
 		$woods_return_parse = array();
-		preg_match_all("/<tr.*>[\\s\\S]*?<a href=\\\".*dc_cateid_0\\=([^\\&]*).*cargxuid.*\\=([0-9A-Z]+)\\&.*title=\\\"([^\\\"]*)\\\".*img src=\\\"([^\"]+)\\\"[\\s\\S]*?pd_hlight\\\">([0-9]+)<\\/span>/", $woods_html_code, $woods_return_parse);
+		preg_match_all("/<tr.*>[\\s\\S]*?<a href=\\\".*dc_cateid_0\\=([^\\&]*).*cargxuid.*\\=([0-9A-Z]+)\\&.*title=\\\"([^\\\"]*)\\\".*img src=\\\"([^\\\"]+)\\?.*\\\"[\\s\\S]*?pd_hlight\\\">([0-9]+)<\\/span>/", $woods_html_code, $woods_return_parse);
 
 		save_woods($Finder, $woods_return_parse);
 	}
@@ -46,7 +47,7 @@ function save_woods($aFinder, $ray) {
 	if(count($ray[0]) > 0) foreach($ray[0] as $k => $v) {
 		//$ray[2][$k]
 		//($wid, $wname, $wprice, $woffer, $wcategory = '', $wpic)
-		$aFinder->create_woods($ray[2][$k], $ray[3][$k], 0, $ray[5][$k], '', $ray[4][$k]);
+		$aFinder->create_woods($ray[2][$k], $ray[3][$k], 0, $ray[5][$k], '', 'http:'.$ray[4][$k]);
 
 		if(count($aFinder->tmp_category) > 0) foreach($aFinder->tmp_category as $ka => $va) {
 			if (preg_match("/^{$ka}/", $ray[1][$k]) === 1) {
@@ -64,6 +65,7 @@ function get_category($aFinder, $loop_value, $category = '') {
 		'{$data}' => urlencode($loop_value),
 		'{$category}' => $category,
 	));
+		echo $category_url.'<br />';
 	$category_html_code = $aFinder->get_html_code($category_url);
 
 	$category_decode = json_decode($category_html_code);
@@ -80,16 +82,7 @@ function get_category($aFinder, $loop_value, $category = '') {
 			return;
 		}
 	}
-
-	/*
-	  {
-	    "count": "6",
-	    "parentXuid": "",
-	    "nm2": "流行服飾",
-	    "xuid": "C"
-	  }
-	*/
-
+	return;
 }
 
 function parse_search_item_num($ray) {

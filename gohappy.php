@@ -16,7 +16,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 	} else foreach($Finder->tmp_category as &$v) {
 		//var_dump($v); die();
 		get_item_by_category($Finder, $loop_page, $loop_value, $v->category_id, $v->category_lv, $v->category_name, $v->category_cid);
-		echo count($Finder->tmp_category).'<br />';
+		// echo count($Finder->tmp_category).'<br />';
 	}
 
 	// if(count($Finder->repeat_category) > 0) foreach($Finder->repeat_category as $v) {
@@ -169,11 +169,11 @@ function save_woods($aFinder, $ray, $category) {
 //*/
 
 function get_item_by_category($aFinder, $loop_page, $loop_value, $cate, $lv, $name, $cate_cid, $per_page = 20) {
-	echo 'start get_item <br />';
+	// echo 'start get_item <br />';
 	$search_main_category = '';
 	for($i = 1; $i <= $loop_page; $i ++) {
 		//http://m.gohappy.com.tw/smartphone/SearchAdv.do?searchs={$data}&sids={$cate}&pageindex={$page}&cateLvs={$lv}&cid={$cate}
-		echo '> '.$i.' / '.$loop_page.' ['.$name.'] <br />';
+		// echo '> '.$i.' / '.$loop_page.' ['.$name.'] <br />';
 		$main_category_url = strtr($aFinder->current_type['ftgetmaincategory_url'], Array(
 			'{$data}' => urlencode($loop_value),
 			'{$page}' => $i,
@@ -234,7 +234,7 @@ function get_item_by_category($aFinder, $loop_page, $loop_value, $cate, $lv, $na
 function get_item($aFinder, $loop_page, $loop_value, $per_page = 20) {
 	echo 'start get_item <br />';
 	for($i = 1; $i <= $loop_page; $i ++) {
-		echo '> '.$i.' / '.$loop_page.' <br />';
+		// echo '> '.$i.' / '.$loop_page.' <br />';
 		$main_category_url = strtr($aFinder->current_type['ftgetcategory_url'], Array(
 			'{$data}' => urlencode($loop_value),
 			'{$page}' => $i,
@@ -271,7 +271,7 @@ function get_item($aFinder, $loop_page, $loop_value, $per_page = 20) {
 		$bool_item_parse = parse_search_item($aFinder, $search_item_return_parse);
 		if(!$bool_item_parse) $aFinder->finder_error("資料抓取錯誤", 'bool_item_parse', 801 );
 	}
-	echo 'end get_item <br />';
+	// echo 'end get_item <br />';
 
 	// $main_category_return_parse = array();
 	// preg_match_all("/<option.*value=\\\"[0-9]+\\,?S?([0-9]+)\\\"[\\s\\S]{1,10}>(.*)\\(([0-9]+)\\)<\\//u", $main_category_html_code, $main_category_return_parse);
@@ -281,7 +281,7 @@ function get_item($aFinder, $loop_page, $loop_value, $per_page = 20) {
 
 function parse_search_item($aFinder, $ray, $cate_id = null, $cate_name = null) {
 	if(count($ray) != 5) {
-		echo '>>> count($ray) != 5 <br />';
+		// echo '>>> count($ray) != 5 <br />';
 		return false;
 	}
 
@@ -290,7 +290,7 @@ function parse_search_item($aFinder, $ray, $cate_id = null, $cate_name = null) {
 		if(count($ray[$i]) != count($ray[$i+1])) return false;
 	}
 
-	echo '>>>> '.count($ray[0]).'<br />';
+	// echo '>>>> '.count($ray[0]).'<br />';
 
 	if(count($ray[0]) == 0) {
 		var_dump($ray);
@@ -307,7 +307,7 @@ function parse_search_item($aFinder, $ray, $cate_id = null, $cate_name = null) {
 			$aFinder->create_category($cate_id, $cate_name);
 		}
 
-		echo '>> '.$ray[1][$k].' | '.$ray[3][$k].' <br />';
+		// echo '>> '.$ray[1][$k].' | '.$ray[3][$k].' <br />';
 
 		if(!in_array($ray[1][$k], $aFinder->repeat_category)) {
 			array_push($aFinder->repeat_category, $ray[1][$k]);			
@@ -359,7 +359,7 @@ function preg_array_sort_main_category($aFinder, $ray) {
 	}
 
 	if(count($ray[0]) > 0) foreach($ray[0] as $k => $v) {
-		echo '>>>> '.$ray[2][$k].' ['.$ray[1][$k].'] <br />';
+		// echo '>>>> '.$ray[2][$k].' ['.$ray[1][$k].'] <br />';
 		$return_ray[$k] = (object)Array(
 			'category_id' => $ray[1][$k],
 			'category_name' => $ray[2][$k],

@@ -139,7 +139,7 @@ function get_category ($aFinder, $html_code) {
 
 function get_woods($aFinder, $html_code) {
 	$retrun_parse = array();
-	preg_match_all("/<div class=\\\"item yui3-.*\\\">[\\s\\S]{1,100}<a href=\\\".*gdid=(\\d+)\\\" title=\\\"(.*)\\\">[\\s\\S]{1,200}<img[\\s\\S]{1,200}src=\\\".*images\\/(.*)\\\">[\\s\\S]{1,1000}<span class=\\\"srp-promo.*\\\">[\\s\\S]{1,100}<em>(.*)<\\/em>/u", $html_code, $retrun_parse);
+	preg_match_all("/<div class=\\\"item yui3-.*\\\">[\\s\\S]*?<a href=\\\".*gdid=(\\d+)\\\" title=\\\"(.*)\\\">[\\s\\S]*?<img[\\s\\S]*?src=\\\".*images\\/(.*)\\\">[\\s\\S]*?<span class=\\\"srp-promo.*\\\">[\\s\\S]{1,100}<em>(.*)<\\/em>/u", $html_code, $retrun_parse);
 	$array_finder_item = array();
 
 	if(count($retrun_parse[0]) > 0) foreach($retrun_parse[0] as $k => $v) {

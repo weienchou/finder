@@ -13,6 +13,7 @@ class Finder {
 	function __construct($type) {
 		ini_set('max_execution_time', 0);
 		ini_set('memory_limit', '-1');
+		set_time_limit(900);
 
 		//*  // 我要顯示 error message
 		ini_set('display_errors', 1);
@@ -52,6 +53,7 @@ class Finder {
 
 	function set_start_time() {
 		$this->start_time = strtotime('now');
+		echo 'Start '.date('Y/m/d H:i:s', $this->start_time).'. <br />';
 	}
 
 	function set_stop_time() {
@@ -61,9 +63,9 @@ class Finder {
 	function show_time() {
 		$diff = floor($this->stop_time-$this->start_time);
 		echo '<hr />';
-		echo 'Start '.date('Y/m/d H:i:s', $this->start_time).' . <br />';
-		echo 'Stop '.date('Y/m/d H:i:s', $this->stop_time).' . <br />';
-		echo 'Spend '.$diff.' s. <br />Save '.$this->current_limit_woods.' Woods.';
+		echo 'Stop '.date('Y/m/d H:i:s', $this->stop_time).'. <br />';
+		echo 'Spend '.$diff.' s. <br />'; //Save '.$this->current_limit_woods.' Woods. <br />';
+		exit('Process done.');
 	}
 
 	// 檢查 construct type 是否有在 db 中
@@ -86,7 +88,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'apple'
+			'iphone 6s 16G'
 		);
 	}
 
@@ -187,20 +189,21 @@ class Finder {
 		$woffer = preg_replace('/\D/', '', $woffer);
 
 		$primary_id = md5($wid);
-		$chk_woods = $this->find_woods($primary_id);
+		//$chk_woods = $this->find_woods($primary_id);
 
 		if(!empty($wcategory)) {
 			$this->create_relation($wcategory, $primary_id);
 		}
 
-		if(count($chk_woods) > 0) {
+		/*if(count($chk_woods) > 0) {
 			$this->update_woods($primary_id, $wname, $wprice, $woffer, $wpic);
 			return true;
-		}
+		}*/
 
 		$sql = "
 			INSERT INTO `finder_goods` (`fguid`, `fgsid`, `fgname`, `fgprice`, `fgoffer`, `fgpic_url`, `fgtype`, `fgupdate_time`, `fgcreate_time`) 
-			VALUES ('{$primary_id}', '{$wid}', '{$wname}', '{$wprice}', '{$woffer}', '{$wpic}', '{$this->current_type['ftuid']}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
+			VALUES ('{$primary_id}', '{$wid}', '{$wname}', '{$wprice}', '{$woffer}', '{$wpic}', '{$this->current_type['ftuid']}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+			ON DUPLICATE KEY UPDATE `fgname`='{$wname}', `fgprice`='{$wprice}', `fgoffer`='{$woffer}', `fgpic_url`='{$wpic}', `fgupdate_time`=CURRENT_TIMESTAMP;";
 
 		$this->current_limit_woods += 1;
 		
@@ -266,20 +269,23 @@ class Finder {
 
 	function create_category($cid, $cname) {
 		if(empty($cname) || empty($cid)) return false;
+		if($cname == '9999') return false;
 		$cname 		= mysql_real_escape_string($cname);
 		$cid = (strpos($cid, $this->current_type['ftname']) === false) ? $this->current_type['ftname'].'_'.$cid : $cid;
 
 		$primary_id = md5($cid);
-		$chk_woods = $this->find_category($primary_id);
+		/*$chk_woods = $this->find_category($primary_id);
 
 		if(count($chk_woods) > 0) {
 			$this->update_category($primary_id, $cname);
 			return false;
-		}
+		}*/
 
 		$sql = "
 			INSERT INTO `finder_category` (`fcuid`, `fcsid`, `fcname`, `fcupdate_time`) 
-			VALUES ('{$primary_id}', '{$cid}', '{$cname}', CURRENT_TIMESTAMP);";
+			VALUES ('{$primary_id}', '{$cid}', '{$cname}', CURRENT_TIMESTAMP)
+
+			ON DUPLICATE KEY UPDATE `fcname`='{$cname}', `fcupdate_time`=CURRENT_TIMESTAMP;";
 
 		mysql_query($sql) or $this->finder_error("Create Category Error.", mysql_error(), 888 );
 	}

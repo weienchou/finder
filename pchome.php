@@ -67,7 +67,7 @@ function parse_woods_json ($aFinder, $data_array) {						// 分析 json 並儲�
 	$category_ray = Array();
 	if(count($data_array) > 0) foreach($data_array as $loop_data) {
 		//var_dump($aFinder->current_type); die();
-		$aFinder->create_woods($loop_data->Id, $loop_data->name, 0, $loop_data->price, $loop_data->cateId, $loop_data->picB);		
+		$aFinder->create_woods($loop_data->Id, $loop_data->name, 0, $loop_data->price, $loop_data->cateId, 'http://a.ecimg.tw'.$loop_data->picB);		
 		if(count($aFinder->repeat_category) > 0) foreach($aFinder->repeat_category as $k => $v) {
 			if (preg_match("/^{$k}/", $loop_data->cateId) === 1) {
 				$aFinder->create_relation($k, md5($loop_data->Id));
