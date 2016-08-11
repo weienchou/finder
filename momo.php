@@ -10,7 +10,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 																		// 取得 商品 開始
 		$woods_url = $Finder->current_type['ftgetwoods_url'];
 		$str_woods_code = $Finder->get_html_code($woods_url, true, Array(
-			'data' => '{"flag":"searchEngine","data":{"searchValue":"'.urlencode($loop_value).'","searchType":"1","currPage":"'.$i.'","cp":"N","NAM":"N","first":"N","superstore":"N","normal":"N","cateCode":"","cateLevel":"-1","priceS":"最低價","priceE":"最高價"}}'
+			'data' => '{"flag":"searchEngine","data":{"searchValue":"'.encode_ucf4($loop_value).'","searchType":"1","currPage":"'.$i.'","cp":"N","NAM":"N","first":"N","superstore":"N","normal":"N","cateCode":"","cateLevel":"-1","priceS":"最低價","priceE":"最高價"}}'
 		));
 
 		// 沒有搜尋到 {"rtnMsg":"success!","rtnCode":200,"rtnData":{"totCnt":0}}
@@ -31,7 +31,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 																		// 取得 商品 結束
 
 																		// 取得 商品 類別 開始
-		parse_category_json($Finder, urlencode($loop_value), $decode_woods_code->rtnData->categoryLt, 0);
+		parse_category_json($Finder, encode_ucf4($loop_value), $decode_woods_code->rtnData->categoryLt, 0);
 
 	}
 }
@@ -102,4 +102,13 @@ function parse_category_json ($aFinder, $woods_name, $data_array, $level) {					
 		
 	}
 	//if($count_category_level >= 1) return ;
+}
+
+function encode_ucf4 ($str) {
+	return $str;
+	$encode_string = '';
+	for($i = 0; $i < mb_strlen($str, 'utf-8'); $i++) {
+		$encode_string .= '&#' . base_convert(bin2hex(iconv("utf-8", "ucs-4", mb_substr($str, $i, 1, 'utf8'))), 16, 10) . ';';
+	}
+	return $encode_string;
 }

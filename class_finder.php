@@ -54,6 +54,17 @@ class Finder {
 	function set_start_time() {
 		$this->start_time = strtotime('now');
 		echo 'Start '.date('Y/m/d H:i:s', $this->start_time).'. <br />';
+		echo '<table border="1">
+				<thead>
+					<tr>
+						<td> 商品編號 </td>
+						<td> 商品名稱 </td>
+						<td> 商品價錢 </td>
+						<td> 商品特價 </td>
+					</tr>
+				</thead>
+				<tbody>
+			';
 	}
 
 	function set_stop_time() {
@@ -62,6 +73,8 @@ class Finder {
 
 	function show_time() {
 		$diff = floor($this->stop_time-$this->start_time);
+		echo '	</tbody>
+			 </table>';
 		echo '<hr />';
 		echo 'Stop '.date('Y/m/d H:i:s', $this->stop_time).'. <br />';
 		echo 'Spend '.$diff.' s. <br />'; //Save '.$this->current_limit_woods.' Woods. <br />';
@@ -88,7 +101,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'iphone 6s 16G'
+			'案情並不單純'
 		);
 	}
 
@@ -194,6 +207,14 @@ class Finder {
 		if(!empty($wcategory)) {
 			$this->create_relation($wcategory, $primary_id);
 		}
+
+		echo '
+			<tr>
+				<td> '.$wid.' </td>
+				<td> '.$wname.' </td>
+				<td> '.$wprice.' </td>
+				<td> '.$woffer.' </td>
+			</tr>';
 
 		/*if(count($chk_woods) > 0) {
 			$this->update_woods($primary_id, $wname, $wprice, $woffer, $wpic);
