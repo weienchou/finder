@@ -1,6 +1,6 @@
 <?php require('class_finder.php');										// 引用 Finder
 
-$Finder = new Finder('etmall');											// 建立 Finder
+$Finder = new Finder('umall');											// 建立 Finder
 
 $Finder->set_start_time();
 

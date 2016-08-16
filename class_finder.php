@@ -101,7 +101,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'案情並不單純'
+			'dell'
 		);
 	}
 
@@ -285,7 +285,6 @@ class Finder {
 		} else {
 			return mysql_fetch_assoc($result);
 		}
-
 	}
 
 	function create_category($cid, $cname) {
