@@ -9,7 +9,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 	$loop_page = 0;
 
 	$Finder->tmp_category = array('');
-	echo $loop_value.'<br />';
+	// echo $loop_value.'<br />';
 
 	$loop_number = 0;
 	while($loop_number - 1 <= count($Finder->tmp_category)) {
@@ -18,7 +18,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 
 		$LoopData = $Finder->tmp_category[$loop_number];
 		if(!empty($LoopData))
-			echo ' ---------- > '.$LoopData.' / '.$Finder->repeat_category[$LoopData].'<br />';
+			// echo ' ---------- > '.$LoopData.' / '.$Finder->repeat_category[$LoopData].'<br />';
 		if($loop_number == 0) {
 			
 			$woods_url = strtr($Finder->current_type['ftgetwoods_url'], Array(
@@ -62,11 +62,11 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 
 				paseWoods($Finder, $str_woods_code, $LoopData);
 				// var_dump($Finder->tmp_category);
-				echo ' ---------- > end page ('.$i.' / '.$loop_page_max.')<br />';
+				// echo ' ---------- > end page ('.$i.' / '.$loop_page_max.')<br />';
 			}
 		}
 
-		echo count($Finder->tmp_category).'<br />';
+		// echo count($Finder->tmp_category).'<br />';
 
 		$loop_number ++;
 
@@ -79,7 +79,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 		
 	}*/
 
-	echo '>>>> '.var_dump($Finder->tmp_category).'<br />';
+	// echo '>>>> '.var_dump($Finder->tmp_category).'<br />';
 }
 
 $Finder->set_stop_time();
