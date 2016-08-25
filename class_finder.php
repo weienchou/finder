@@ -102,7 +102,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'蘋果汁'
+			'零阻力'
 		);
 	}
 
@@ -111,6 +111,7 @@ class Finder {
 		if(empty($url)) return '';
 
 		$options = array(
+	        CURLOPT_SSL_VERIFYPEER => false,
 	        CURLOPT_RETURNTRANSFER => true,
 	        CURLOPT_HEADER         => true,
 	        CURLOPT_FOLLOWLOCATION => true,
