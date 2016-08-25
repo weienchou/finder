@@ -7,6 +7,10 @@
 	預設 -1 無限制
 	傳入非數字，使用預設
 
+*	取得商品完整網址
+	將 table `finder_type` column `ftdetial_url` 裡的 {$data}
+	replace 成 table `finder_goods` column `fgsid` 
+
 ## PCHOME
 *	利用關鍵字搜尋，每搜尋一頁儲存商品，並儲存的商品類別。
 
