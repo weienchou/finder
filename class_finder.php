@@ -230,10 +230,10 @@ class Finder {
 
 		$this->current_limit_woods += 1;
 
-		if($this->current_limit_woods > $this->limit_woods) {
-			$this->finder_error("It's limited.", '', 700 );
+		if($this->current_limit_woods >= $this->limit_woods) {
 			$this->set_stop_time();
 			$this->show_time();
+			$this->finder_error("It's Out of limit.", '', 900 );
 			exit();
 		}
 		
