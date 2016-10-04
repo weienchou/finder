@@ -33,13 +33,15 @@
 	
 
 ### 取得 商品以及商品類別
+`
 SELECT 
 	`finder_type`.`ftname`, 
 	finder_goods.fgsid, 
 	group_concat(finder_category.fcname SEPARATOR ' | ') AS category, 
 	finder_goods.fgname, 
-	REPLACE (finder_type.`ftdetial_url`, '{$data}', finder_goods.fgsdid`) as woods_url, 
-	finder_goods.fgoffer
+	finder_goods.fgoffer,
+	REPLACE (finder_type.`ftdetial_url`, '{$data}', finder_goods.fgsid) AS woods_url, 
+	finder_goods.fgpic_url
 
 FROM finder_goods
 
@@ -53,3 +55,4 @@ LEFT JOIN finder_category ON (finder_category.fcuid = finder_relation.fcrcategor
 GROUP BY finder_goods.fguid
 
 ORDER BY finder_goods.fgupdate_time DESC;
+`

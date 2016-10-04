@@ -39,6 +39,7 @@ class Finder {
 		} else {
 			$this->get_keyword();
 		}
+		echo '<style>body{line-height: 22px;font-family: arial;}</style>';
 	}
 
 	// 資料庫連線 function
@@ -54,10 +55,11 @@ class Finder {
 
 	function set_start_time() {
 		$this->start_time = strtotime('now');
-		echo 'Start '.date('Y/m/d H:i:s', $this->start_time).'. <br />';
-		echo '<table border="1">
+		echo date('Y/m/d H:i:s', $this->start_time).' Start Finder 2.0<br />';
+		echo '<table border="1" style="width: 100%;" cellspacing="0">
 				<thead>
 					<tr>
+						<td> # </td>
 						<td> 商品編號 </td>
 						<td> 商品名稱 </td>
 						<td> 商品價錢 </td>
@@ -77,7 +79,7 @@ class Finder {
 		echo '	</tbody>
 			 </table>';
 		echo '<hr />';
-		echo 'Stop '.date('Y/m/d H:i:s', $this->stop_time).'. <br />';
+		echo date('Y/m/d H:i:s', $this->stop_time).' Stop <br />';
 		echo 'Spend '.$diff.' s. <br />'; //Save '.$this->current_limit_woods.' Woods. <br />';
 		exit('Process done.');
 	}
@@ -102,7 +104,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'零阻力'
+			'Sony XZ'
 		);
 	}
 
@@ -212,6 +214,7 @@ class Finder {
 
 		echo '
 			<tr>
+				<td> '.($this->current_limit_woods+1).' </td>
 				<td> '.$wid.' </td>
 				<td> '.$wname.' </td>
 				<td> '.$wprice.' </td>
@@ -230,12 +233,14 @@ class Finder {
 
 		$this->current_limit_woods += 1;
 
-		if($this->current_limit_woods >= $this->limit_woods) {
+		/*if($this->current_limit_woods >= $this->limit_woods) {
 			$this->set_stop_time();
 			$this->show_time();
 			$this->finder_error("It's Out of limit.", '', 900 );
 			exit();
-		}
+		}*/
+	    flush();
+		ob_flush();
 		
 		mysql_query($sql) or $this->finder_error("Create Woods Error.", mysql_error(), 888 );
 	}
