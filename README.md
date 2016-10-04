@@ -11,7 +11,8 @@
 	將 table `finder_type` column `ftdetial_url` 裡的 {$data}
 	replace 成 table `finder_goods` column `fgsid` 
 
-## PCHOME `ec_pchome.php`
+## PCHOME 
+	`ec_pchome.php`
 	
 
 ### 取得 商品以及商品類別
