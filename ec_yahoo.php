@@ -1,6 +1,6 @@
 <?php require('class_finder.php');										// 引用 Finder
 
-$Finder = new Finder('momo');											// 建立 Finder
+$Finder = new Finder('yahoo');											// 建立 Finder
 
 
 $Finder->set_start_time();
@@ -21,18 +21,17 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 
 		$WoodsList = GetWoodsList($Finder, $LoopKeyWord, $CurrentPage);	// 開始抓資料
 
-		if(is_null($WoodsList)) break;
-		if($WoodsList->rtnCode != 200) break;
-		if($WoodsList->rtnData->totCnt == 0) break;
+		$PageStatus = ParseWoodsPage($WoodsList);
 
-		if($TotalPage == 1) {											//更新頁數
-			$TotalWoods = $WoodsList->rtnData->totCnt;			// 總共有幾個可以抓
-			$TotalPage = $WoodsList->rtnData->maxPage;			// 總共要抓幾頁
+		if($TotalPage == 1 && !empty($PageStatus)) {					//更新頁數
+			$TotalWoods = $PageStatus['TotRows'];						// 總共有幾個可以抓
+			$TotalPage = ceil($PageStatus['TotRows'] / $PageStatus['PerPage']);
+																		// 總共要抓幾頁
 
 			echo date('Y/m/d H:i:s')." 共 {$TotalPage} 頁，共 {$TotalWoods} 筆，限制 {$Finder->limit_woods} 筆。<br />";
 		}
 
-		if(!ParseWoodsList($Finder, $WoodsList->rtnData->goodsInfoList)) break;			// 分析資料並儲存
+		if(!ParseWoodsList($Finder, $WoodsList)) break;					// 分析資料並儲存
 	}
 	
 	/*
@@ -48,7 +47,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 
 		$ParseCategoryArray = array();
 		preg_match(
-			'/pathArea\"[\s\S]*?<li><a[\s\S]*?>([\s\S]*?)<\/a>[\s\S]*?<li><a[\s\S]*?>([\s\S]*?)<\/a>[\s\S]*?<li>([\s\S]*?)<[\s\S]*?<li><a[\s\S]*?>([\s\S]*?)<\/a>/', 
+			'/dimension3\',\'([\s\S]*?)\'[\s\S]*?dimension4\',\'([\s\S]*?)\'[\s\S]*?dimension5\',\'([\s\S]*?)\'[\s\S]*?dimension6\',\'([\s\S]*?)\'/', 
 			$PageCode, 
 			$ParseCategoryArray
 		);
@@ -72,46 +71,61 @@ $Finder->show_time();
  */
 
 function GetWoodsList($aFinder, $Keyword, $Page) {
-	$str_woods_code = $aFinder->get_html_code($aFinder->current_type['ftgetwoods_url'], true, Array(
-		'data' => '{"flag":"searchEngine","data":{"searchValue":"'.$Keyword.'","searchType":"1","currPage":"'.$Page.'","cp":"N","NAM":"N","first":"N","superstore":"N","normal":"N","cateCode":"","cateLevel":"-1","priceS":"最低價","priceE":"最高價"}}'
+	$woods_url = strtr($aFinder->current_type['ftgetwoods_url'], Array(
+		'{$data}' => urlencode($Keyword),
+		'{$page}' => $Page
 	));
 
-	// $str_woods_code = $aFinder->get_html_code($woods_url);
+	$str_woods_code = $aFinder->get_html_code($woods_url);
 
-	$decode_woods_code = json_decode($str_woods_code);
-
-	return $decode_woods_code;
+	return $str_woods_code;
 }
 
-function ParseWoodsList($aFinder, $WoodsList) {
-	if(count($WoodsList) > 0) foreach($WoodsList as $loop_data) {
+function ParseWoodsPage($WoodsCode) {
+	$ParseWoodsPageArray = array();
+	preg_match(
+		'/pagenum:([0-9]+);nr:([0-9]+);n_sr:([0-9]+);/', 
+		$WoodsCode, 
+		$ParseWoodsPageArray
+	);
+
+	if(count($ParseWoodsPageArray) != 4) return Array(
+		"NowPage" => 0,
+		"TotRows" => 0,
+		"PerPage" => 0,
+	);
+
+	return Array(
+		"NowPage" => $ParseWoodsPageArray[1],
+		"TotRows" => $ParseWoodsPageArray[2],
+		"PerPage" => $ParseWoodsPageArray[3]
+	);
+}
+
+function ParseWoodsList($aFinder, $WoodsCode) {
+	$ParseWoodsArray = array();
+	preg_match_all(
+		'/<div class=\"item yui3-.*\">[\s\S]*?<a href=\".*gdid=(\d+)\" title=\"(.*)\">[\s\S]*?<img[\s\S]*?src=\"([\s\S]*?)\">[\s\S]*?<span class=\"srp-promo.*\">[\s\S]*?<em>(.*)<\/em>/', 
+		$WoodsCode, 
+		$ParseWoodsArray
+	);
+
+	if(count($ParseWoodsArray[0]) > 0) foreach($ParseWoodsArray[0] as $k => $v) {
 		if($aFinder->current_limit_woods == $aFinder->limit_woods) {	// && $aFinder->limit_woods != -1 // 超過 limit
 			echo date('Y/m/d H:i:s')." Out of limit.<hr />";
 			return false;
 		}
-		$wpic_url = ParseWoodsImageUrl($loop_data->GOODS_CODE);
-
 		$aFinder->create_woods(
-			$loop_data->GOODS_CODE, 
-			$loop_data->GOODS_NAME, 
+			$ParseWoodsArray[1][$k], 
+			$ParseWoodsArray[2][$k], 
 			0, 
-			$loop_data->SALE_PRICE, 
+			$ParseWoodsArray[4][$k], 
 			'', 
-			$loop_data->IMG_URL.$wpic_url);		
-		$aFinder->tmp_category['Woods'][] = $loop_data->GOODS_CODE;
-		// $aFinder->tmp_category['Category'][] = $loop_data->cateId;
+			$ParseWoodsArray[3][$k]
+		);
+		$aFinder->tmp_category['Woods'][] = $ParseWoodsArray[1][$k];
 	}
 	return true;
-}
-
-function ParseWoodsImageUrl ($wuid) {										// momo 圖片網址 生成
-	$input_line = sprintf('%010d', $wuid);
-	$output = array();
-	preg_match('/([0-9]{4})([0-9]{3})([0-9]{3})/', $input_line, $output);
-	if(count($output) != 4) return '';
-	$str_output = $output[1].'/'.$output[2].'/'.$output[3].'/'.$wuid.'_R.jpg';
-
-	return $str_output;
 }
 
 function GetWoodsPageCode($aFinder, $WoodsID) {

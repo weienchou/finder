@@ -39,7 +39,7 @@ class Finder {
 		} else {
 			$this->get_keyword();
 		}
-		echo '<style>body{line-height: 22px;font-family: arial;}</style>';
+		echo '<style>body{line-height: 22px;font-family: arial;} td {padding: 6px 4px;}</style>';
 	}
 
 	// 資料庫連線 function
