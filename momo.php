@@ -13,6 +13,8 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 			'data' => '{"flag":"searchEngine","data":{"searchValue":"'.encode_ucf4($loop_value).'","searchType":"1","currPage":"'.$i.'","cp":"N","NAM":"N","first":"N","superstore":"N","normal":"N","cateCode":"","cateLevel":"-1","priceS":"最低價","priceE":"最高價"}}'
 		));
 
+		echo $str_woods_code; die();
+
 		// 沒有搜尋到 {"rtnMsg":"success!","rtnCode":200,"rtnData":{"totCnt":0}}
 		// 有錯誤 {"rtnMsg":"parameter incomplete","rtnCode":501,"rtnData":{}}
 		$decode_woods_code = json_decode($str_woods_code);

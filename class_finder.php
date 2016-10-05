@@ -138,7 +138,7 @@ class Finder {
 
 	    $response_html_code  = curl_exec($aCurlopt);
 
-	    if($response_html_code === false) $this->finder_error("Get Html Error.", '['.$url.'] '.curl_error($aCurlopt), 900 );
+	    if($response_html_code === false) $this->finder_error("Get Html Error.", '['.$url.'] '.curl_error($aCurlopt).'{'.$url.'}', 900 );
 
 	    $header_size = curl_getinfo($aCurlopt, CURLINFO_HEADER_SIZE);
 		$header = substr($response_html_code, 0, $header_size);
@@ -231,7 +231,6 @@ class Finder {
 			VALUES ('{$primary_id}', '{$wid}', '{$wname}', '{$wprice}', '{$woffer}', '{$wpic}', '{$this->current_type['ftuid']}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 			ON DUPLICATE KEY UPDATE `fgname`='{$wname}', `fgprice`='{$wprice}', `fgoffer`='{$woffer}', `fgpic_url`='{$wpic}', `fgupdate_time`=CURRENT_TIMESTAMP;";
 
-		$this->current_limit_woods += 1;
 
 		/*if($this->current_limit_woods >= $this->limit_woods) {
 			$this->set_stop_time();
@@ -243,6 +242,8 @@ class Finder {
 		ob_flush();
 		
 		mysql_query($sql) or $this->finder_error("Create Woods Error.", mysql_error(), 888 );
+		// echo mysql_info().' <br />';
+		$this->current_limit_woods += 1;
 	}
 
 	function find_relation($rid, $wid) {
