@@ -36,6 +36,14 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 	
 	/*
 	 * --------------------------------------------------------------------------------------------------------------------
+	 * 確定 Woods ID
+	 * --------------------------------------------------------------------------------------------------------------------
+	 */
+	
+	$WoodIDArray = $Finder->CheckWoodsIDInDB($Finder->tmp_category['Woods']);
+	
+	/*
+	 * --------------------------------------------------------------------------------------------------------------------
 	 * 商品類別區
 	 * --------------------------------------------------------------------------------------------------------------------
 	 */
@@ -47,7 +55,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 
 	GetAndParseWoodsCategory($Finder, $Finder->tmp_category['Category']);
 	// var_dump($Finder->tmp_category, $Finder->repeat_category);
-	if(count($Finder->tmp_category['Woods']) > 0) foreach($Finder->tmp_category['Woods'] as $LoopWoods) {
+	if(count($WoodIDArray) > 0) foreach($WoodIDArray as $LoopWoods) {
 
 		if(count($Finder->repeat_category) > 0) foreach($Finder->repeat_category as $k => $v) {
 			// var_dump($k, $v, $LoopWoods); die();

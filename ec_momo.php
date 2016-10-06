@@ -37,13 +37,21 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 	
 	/*
 	 * --------------------------------------------------------------------------------------------------------------------
+	 * 確定 Woods ID
+	 * --------------------------------------------------------------------------------------------------------------------
+	 */
+	
+	$WoodIDArray = $Finder->CheckWoodsIDInDB($Finder->tmp_category['Woods']);
+	
+	/*
+	 * --------------------------------------------------------------------------------------------------------------------
 	 * 商品類別區
 	 * --------------------------------------------------------------------------------------------------------------------
 	 */
 	
 	echo date('Y/m/d H:i:s')." 抓取商品類別... <br />";
 
-	if(count($Finder->tmp_category['Woods']) > 0) foreach($Finder->tmp_category['Woods'] as $LoopWoods) {
+	if(count($WoodIDArray) > 0) foreach($WoodIDArray as $LoopWoods) {
 		$PageCode = GetWoodsPageCode($Finder, $LoopWoods);
 
 		$ParseCategoryArray = array();

@@ -242,7 +242,7 @@ class Finder {
 		ob_flush();
 		
 		mysql_query($sql) or $this->finder_error("Create Woods Error.", mysql_error(), 888 );
-		// echo mysql_info().' <br />';
+		// echo mysql_affected_rows().' <br />';
 		$this->current_limit_woods += 1;
 	}
 
@@ -334,6 +334,31 @@ class Finder {
 			WHERE `fcuid` = '{$cid}';";
 
 		mysql_query($sql) or $this->finder_error("Update Category Error.", mysql_error(), 888 );
+	}
+
+	function CheckWoodsIDInDB($WoodIDArray) {
+		$sql = "
+			SELECT `finder_goods`.`fgsid`
+			FROM   `finder_goods`
+	        LEFT JOIN `finder_relation`
+	               ON ( `finder_relation`.`fcrgoods_uid` = `finder_goods`.`fguid` )
+			WHERE  `finder_goods`.`fgsid` IN ( '".implode($WoodIDArray, "', '")."' )
+			       AND `finder_relation`.`fcrcategory_uid` IS NULL
+			       AND `finder_goods`.`fgtype` = '{$this->current_type['ftuid']}';";
+
+		$result = mysql_query($sql) or $this->finder_error("Check WoodsID In DB Error.", mysql_error(), 888 );
+		$count = mysql_num_rows($result);
+
+		if($count == 0) {
+			return Array();
+		} else {
+			$ReturnArray = Array();
+			while($FetchRow=mysql_fetch_row($result)) {
+				$ReturnArray[] = $FetchRow[0];
+			}
+			
+			return $ReturnArray;
+		}
 	}
 
 	// 紀錄每次抓取網頁的 網址 header 內容
