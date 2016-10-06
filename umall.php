@@ -29,6 +29,8 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $loo
 			));
 
 			$str_woods_code = $Finder->get_html_code($woods_url);
+
+			var_dump($str_woods_code); die();
 			//paseWoods($Finder, $str_woods_code);
 			$category_array = paseCategory($Finder, $str_woods_code);
 			// $return_category_array = ;

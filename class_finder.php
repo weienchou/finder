@@ -14,7 +14,7 @@ class Finder {
 		header("Content-Type:text/html; charset=utf-8");
 		ini_set('max_execution_time', 0);
 		ini_set('memory_limit', '-1');
-		set_time_limit(900);
+		set_time_limit(0);
 
 		//*  // 我要顯示 error message
 		ini_set('display_errors', 1);
@@ -104,7 +104,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'Sony XZ'
+			'Sony'
 		);
 	}
 
@@ -119,13 +119,14 @@ class Finder {
 	        CURLOPT_FOLLOWLOCATION => true,
 	        CURLOPT_VERBOSE		   => true,
 	        CURLOPT_ENCODING       => '',
-	        CURLOPT_USERAGENT      => 'Mozilla/5.0 (WAYNE) Gecko/20120101 Firefox/33.0',
+	        CURLOPT_USERAGENT      => 'Mozilla/5.0 (FINDER 2.0) Gecko/20160101 Firefox/34.0',
 	        CURLOPT_AUTOREFERER    => true,
 	        CURLOPT_CONNECTTIMEOUT => 120,
 	        CURLOPT_TIMEOUT        => 180,
 	        CURLOPT_COOKIEJAR	   => 'cookie/'.$this->current_type['ftname'].'_cookie.txt',
 	        CURLOPT_BUFFERSIZE	   => 128,
-	        CURLOPT_COOKIEFILE	   => 'cookie/'.$this->current_type['ftname'].'_cookie.txt'
+	        CURLOPT_COOKIEFILE	   => 'cookie/'.$this->current_type['ftname'].'_cookie.txt',
+	        CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1
 	    ); 
 
 	    if($post == true && !empty($post_data)) {
