@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.25)
 # Database: finder
-# Generation Time: 2016-10-06 04:55:17 +0000
+# Generation Time: 2016-10-06 09:26:20 +0000
 # ************************************************************
 
 
@@ -111,11 +111,11 @@ LOCK TABLES `finder_type` WRITE;
 
 INSERT INTO `finder_type` (`ftuid`, `ftname`, `ftdetial_url`, `ftgetwoods_url`, `ftgetmaincategory_url`, `ftgetcategory_url`, `ftgetpic_url`, `ftsleep_time`, `ftcreate_time`)
 VALUES
-	('005d9e2bdbd780f0906bcdda98a1679d','UDN','','http://shopping.udn.com/mall/cus/search/SearchAction.do?keyword={$data}&cid=&sort=weight&pageSize={$pageno}&start={$page}','http://shopping.udn.com/mall/cus/search/SearchAjaxService.inw?method=cateTreeview&keyword={$data}&cid={$category}','','',1,'2016-08-01 15:35:27'),
+	('005d9e2bdbd780f0906bcdda98a1679d','UDN','http://shopping.udn.com/mall/cus/search/DetailAction.do?action=Cc1c02.do&dc_cargxuid_0={$data}','http://shopping.udn.com/mall/cus/search/SearchAction.do?keyword={$data}&cid=&sort=weight&pageSize={$pageno}&start={$page}&key={$key}','http://shopping.udn.com/mall/cus/search/SearchAjaxService.inw?method=cateTreeview&keyword={$data}&cid={$category}','','',1,'2016-08-01 15:35:27'),
 	('06c56a89949d617def52f371c357b6db','MOMO','http://m.momoshop.com.tw/goods.momo?i_code={$data}','http://m.momoshop.com.tw/mosearch/searchEg.jsp','','http://m.momoshop.com.tw/mosearch/searchEg.jsp','http://img3.momoshop.com.tw/goodsimg/{$data}',1,'2016-07-07 10:48:03'),
 	('11fe66a87df42ed3de1be8af0f3f33bd','PCHOME','http://24h.pchome.com.tw/prod/{$data}','http://ecshweb.pchome.com.tw/search/v3.3/all/results?q={$data}&page={$page}&sort=rnk/dc','http://ecshweb.pchome.com.tw/search/v3.3/all/categories?q={$data}','http://ecapi.pchome.com.tw/ecshop/cateapi/v1.4/store&id={$data}&fields=Id,Name&_callback=jsonpcb_store','http://a.ecimg.tw/{$data}',3,'2016-07-04 14:19:36'),
-	('3dd13b4e40b8fc1922224747295119d4','UMALL','http://www.u-mall.com.tw/Pages/ProductDetail.aspx?ProductSKU={$data}','http://www.u-mall.com.tw/Pages/mobile_search.aspx?SearchKeyword={$data}&ProductPage={$page}&RecordsPerPage={$pageno}&CategoryID={$category}','','','',2,'0000-00-00 00:00:00'),
-	('5118d9084cd0035a424a1668e35e5051','ETMALL','http://www.etmall.com.tw/Pages/ProductDetail.aspx?ProductSKU={$data}','http://www.etmall.com.tw/Pages/mobile_search.aspx?SearchKeyword={$data}&ProductPage={$page}&RecordsPerPage={$pageno}&CategoryID={$category}','','','',2,'2016-08-09 15:19:01'),
+	('3dd13b4e40b8fc1922224747295119d4','UMALL','http://www.u-mall.com.tw/Pages/Prod.aspx?sc={$data}','http://www.u-mall.com.tw/Pages/mobile_search.aspx','','','',2,'0000-00-00 00:00:00'),
+	('5118d9084cd0035a424a1668e35e5051','ETMALL','http://www.etmall.com.tw/Pages/ProductDetail.aspx?ProductSKU={$data}','http://www.etmall.com.tw/Pages/mobile_search.aspx?SearchKeyword={$data}&ProductPage={$page}&RecordsPerPage={$pageno}','','','',2,'2016-08-09 15:19:01'),
 	('c0f95b42a2dc26ee16f357c9d8c673e1','GOHAPPY','http://www.gohappy.com.tw/ec2/search?sid=&hotNum=0&search={$data}','http://m.gohappy.com.tw/smartphone/SearchAdv.do?display=2&pageindex={$page}&pageno={$pageno}&searchFlag=firstSearch&firstTime=0&search={$data}','http://m.gohappy.com.tw/smartphone/SearchAdv.do?searchs={$data}&sids={$cate_cid}&pageindex={$page}&cateLvs={$lv}&cid={$cate}&pageno={$pageno}','','http://img.gohappy.com.tw/images/product/{$data}',2,'2016-07-25 11:53:57'),
 	('ef351e74c34933ec060bc62209516818','YAHOO','https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid={$data}','https://tw.search.buy.yahoo.com/search/shopping/product?p={$data}&qt=product&clv=0&property=shopping&sub_property=shopping&srch=product&act=gdsearch&pg={$page}&dlv=0&rescheck=1','https://tw.search.buy.yahoo.com/search/shopping/{$data}','https://tw.search.buy.yahoo.com/search/shopping/product?p={$data}&qt=product&cid={$category}&clv=1&property=shopping&sub_property=shopping&srch=product&pg={$page}&act=gdsearch','https://s.yimg.com/wb/images/{$data}',1,'2016-07-18 13:39:39');
 
