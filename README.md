@@ -17,6 +17,7 @@
 
 ### 取得 商品以及商品類別
 
+```sql
 SELECT 
 	`finder_type`.`ftname` AS `ec_name`,
 	`finder_goods`.`fgsid` AS `woods_id`, 
@@ -38,3 +39,4 @@ LEFT JOIN `finder_category` ON (`finder_category`.`fcuid` = `finder_relation`.`f
 GROUP BY `finder_goods`.`fguid`
 
 ORDER BY `finder_goods`.`fgupdate_time` DESC;
+```
