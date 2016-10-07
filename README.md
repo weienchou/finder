@@ -16,26 +16,25 @@
 	
 
 ### 取得 商品以及商品類別
-`
-SELECT 
-	`finder_type`.`ftname`, 
-	finder_goods.fgsid, 
-	group_concat(finder_category.fcname SEPARATOR ' | ') AS category, 
-	finder_goods.fgname, 
-	finder_goods.fgoffer,
-	REPLACE (finder_type.`ftdetial_url`, '{$data}', finder_goods.fgsid) AS woods_url, 
-	finder_goods.fgpic_url
 
-FROM finder_goods
+SELECT 
+	`finder_type`.`ftname` AS `ec_name`,
+	`finder_goods`.`fgsid` AS `woods_id`, 
+	group_concat(`finder_category`.`fcname` SEPARATOR ' | ') AS `woods_category`, 
+	`finder_goods`.`fgname` AS `woods_name`, 
+	`finder_goods`.`fgoffer` AS `woods_price`,
+	REPLACE (`finder_type`.`ftdetial_url`, '{$data}', `finder_goods`.`fgsid`) AS `woods_url`, 
+	`finder_goods`.`fgpic_url` AS `woods_pic`
+
+FROM `finder_goods`
 
 INNER JOIN `finder_type`
-	ON (finder_goods.`fgtype` = `finder_type`.`ftuid`)
+	ON (`finder_goods`.`fgtype` = `finder_type`.`ftuid`)
 
-LEFT JOIN finder_relation ON (finder_relation.fcrgoods_uid = finder_goods.fguid)
+LEFT JOIN `finder_relation` ON (`finder_relation`.`fcrgoods_uid` = `finder_goods`.`fguid`)
 
-LEFT JOIN finder_category ON (finder_category.fcuid = finder_relation.fcrcategory_uid)
+LEFT JOIN `finder_category` ON (`finder_category`.`fcuid` = `finder_relation`.`fcrcategory_uid`)
 
-GROUP BY finder_goods.fguid
+GROUP BY `finder_goods`.`fguid`
 
-ORDER BY finder_goods.fgupdate_time DESC;
-`
+ORDER BY `finder_goods`.`fgupdate_time` DESC;
