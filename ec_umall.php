@@ -40,7 +40,13 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 	 * --------------------------------------------------------------------------------------------------------------------
 	 */
 
-	$WoodIDArray = $Finder->CheckWoodsIDInDB($Finder->tmp_category['Woods']);
+	if(isset($Finder->tmp_category['Woods']) && count($Finder->tmp_category['Woods']) > 0 ) {
+		$WoodIDArray = $Finder->CheckWoodsIDInDB($Finder->tmp_category['Woods']);
+	} else {
+		echo date('Y/m/d H:i:s')." 沒有商品可以抓取。 <hr />";
+		$Finder->set_stop_time();
+		$Finder->show_time();
+	}
 	
 	/*
 	 * --------------------------------------------------------------------------------------------------------------------

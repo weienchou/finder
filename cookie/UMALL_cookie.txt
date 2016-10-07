@@ -5,4 +5,4 @@
 #HttpOnly_www.u-mall.com.tw	FALSE	/	FALSE	0	ASP.NET_SessionId	xtxktdujm0syfrcn3120hhkz
 www.u-mall.com.tw	FALSE	/	FALSE	0	ticket	
 www.u-mall.com.tw	FALSE	/	FALSE	0	referrer	
-#HttpOnly_.u-mall.com.tw	TRUE	/	FALSE	0	citrix_ns_id	6TdDbumlCgE3tMxvofpQ5dizYfgA010
+#HttpOnly_.u-mall.com.tw	TRUE	/	FALSE	0	citrix_ns_id	F+7mNIYGqa215ZOvT21fUWSiAvUA010

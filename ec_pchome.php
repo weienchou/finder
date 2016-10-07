@@ -39,8 +39,14 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 	 * 確定 Woods ID
 	 * --------------------------------------------------------------------------------------------------------------------
 	 */
-	
-	$WoodIDArray = $Finder->CheckWoodsIDInDB($Finder->tmp_category['Woods']);
+
+	if(isset($Finder->tmp_category['Woods']) && count($Finder->tmp_category['Woods']) > 0 ) {
+		$WoodIDArray = $Finder->CheckWoodsIDInDB($Finder->tmp_category['Woods']);
+	} else {
+		echo date('Y/m/d H:i:s')." 沒有商品可以抓取。 <hr />";
+		$Finder->set_stop_time();
+		$Finder->show_time();
+	}
 	
 	/*
 	 * --------------------------------------------------------------------------------------------------------------------
@@ -56,9 +62,7 @@ if(count($Finder->current_keyword) > 0) foreach($Finder->current_keyword as $Loo
 	GetAndParseWoodsCategory($Finder, $Finder->tmp_category['Category']);
 	// var_dump($Finder->tmp_category, $Finder->repeat_category);
 	if(count($WoodIDArray) > 0) foreach($WoodIDArray as $LoopWoods) {
-
 		if(count($Finder->repeat_category) > 0) foreach($Finder->repeat_category as $k => $v) {
-			// var_dump($k, $v, $LoopWoods); die();
 			if (preg_match("/^{$k}/", $LoopWoods) === 1) {
 				$Finder->create_relation($k, md5($LoopWoods));
 				$Finder->create_category($k, $v);

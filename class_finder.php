@@ -55,7 +55,7 @@ class Finder {
 
 	function set_start_time() {
 		$this->start_time = strtotime('now');
-		echo date('Y/m/d H:i:s', $this->start_time).' Start Finder 2.0<br />';
+		echo date('Y/m/d H:i:s', $this->start_time).' Start Finder 2.0 [ '.$_SERVER["SCRIPT_FILENAME"].' ]<br />';
 		echo '<table border="1" style="width: 100%;" cellspacing="0">
 				<thead>
 					<tr>
@@ -104,7 +104,7 @@ class Finder {
 	//由 db 中取得關鍵字
 	function get_keyword() {
 		$this->current_keyword = Array(
-			'Sony'
+			'Sony XZ'
 		);
 	}
 
@@ -357,6 +357,8 @@ class Finder {
 			while($FetchRow=mysql_fetch_row($result)) {
 				$ReturnArray[] = $FetchRow[0];
 			}
+
+			echo date('Y/m/d H:i:s')." 抓取商品類別預計花費 ".((count($ReturnArray) * (int)$this->current_type['ftsleep_time']) + 1)." 秒 <br />";
 			
 			return $ReturnArray;
 		}
