@@ -1,18 +1,11 @@
 # finder 使用說明
 *	使用 GET 傳入參數
-*	參數 keyword 
+**	參數 keyword 
 	關鍵字，字串
-*	參數 limit
+**	參數 limit
 	限制筆數，數字
 	預設 -1 無限制
 	傳入非數字，使用預設
-
-*	取得商品完整網址
-	將 table `finder_type` column `ftdetial_url` 裡的 {$data}
-	replace 成 table `finder_goods` column `fgsid` 
-
-## PCHOME 
-	`ec_pchome.php`
 	
 
 ### 取得 商品以及商品類別
